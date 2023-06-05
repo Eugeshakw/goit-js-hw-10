@@ -8,7 +8,7 @@ const options = {
 
 function fetchBreeds() {
   
-    const url = 'https://api.thecatapi.com/v1/breeds123/?limit=20';
+    const url = 'https://api.thecatapi.com/v1/breeds/';
   
     return fetch(url, options)
       .then((response) => {

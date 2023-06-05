@@ -4,25 +4,40 @@ import 'slim-select/dist/slimselect.css';
 import Notiflix, { Report } from 'notiflix';
 
 import './sass/index.scss';
-new SlimSelect({
-    select: '.breed-select'
+
+
+let selectData = []
+console.log(selectData);
+
+const select = new SlimSelect({
+  select: '.breed-select',
+
+  // option 
+
+  data: selectData,
+
   })
+
 
 const refs = {
     selectEl: document.querySelector('.breed-select'),
     loaderEl: document.querySelector('.loader'),
     error: document.querySelector('.error'),
-    catInfo: document.querySelector('.cat-info')
+    catInfo: document.querySelector('.cat-info'),
+    
 }
 
-refs.loaderEl.style.display = 'none'
+
+refs.loaderEl.style.display = 'none';
 refs.loaderEl.textContent = '';
 refs.error.style.display = 'none';
+
+const errMessage = refs.error.textContent;
 
 
 
 function showError() {
-    Notiflix.Notify.failure('Oops! Sth went wrong!');
+    Notiflix.Notify.failure(`${errMessage}`);
 }
 
 
@@ -52,20 +67,27 @@ fetchBreeds()
         
     });
 
+  
+
+
 function addListOfCatsToSelect(cats){
-    
+ 
     cats.forEach((cat) => {
+      selectData.push({text: cat.name, value: cat.id});
         const optionEl = document.createElement('option');
         optionEl.value = cat.id;
         optionEl.textContent = cat.name;
+        // select.setData(selectData);
         refs.selectEl.append(optionEl); 
     });
-    
+    select.setData(selectData);
 };
+
+
 
 function selectOn() {
     const breedId = this.value;
-
+    
     showLoader();
     fetchCatByBreed(breedId)
       .then((cat) => {
@@ -78,6 +100,8 @@ function selectOn() {
         
       });
   }
+  
+
   
   function renderCatInfo(cat) {
     const catInfoDiv = refs.catInfo;
