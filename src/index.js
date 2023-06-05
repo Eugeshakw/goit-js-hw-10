@@ -46,7 +46,7 @@ function showLoader() {
     refs.loaderEl.style.display = 'block';
   }
 
-  function hideLoader() {
+function hideLoader() {
     refs.loaderEl.style.display = 'none';
   }
 
@@ -55,7 +55,6 @@ function showLoader() {
 refs.selectEl.addEventListener('change', selectOn);
 
 showLoader();
-
 fetchBreeds()
     .then((cats) => {
         hideLoader();
@@ -66,8 +65,6 @@ fetchBreeds()
         
         
     });
-
-  
 
 
 function addListOfCatsToSelect(cats){
@@ -102,11 +99,10 @@ function selectOn() {
   }
   
 
-  
   function renderCatInfo(cat) {
     const catInfoDiv = refs.catInfo;
   
-    
+  
     const name = cat.breeds[0].name || '';
     const description = cat.breeds[0].description || '';
     const temperament = cat.breeds[0].temperament || '';
@@ -129,27 +125,6 @@ function selectOn() {
           </p>
         </div>
       </div>`
-    
-    // `
-    //   <h2>${name}</h2>
-    //   <p>${description}</p>
-    //   <p>Temperament: ${temperament}</p>
-    //   <img src="${imageUrl}" alt="${name}" width="400">
-    // `;
-  
-    
+
     catInfoDiv.innerHTML = catInfoTemplate;
   }
-
-
-
-// function selectOn() {
-//     const breedId = this.value;
-//     fetchCatByBreed(breedId)
-//         .then((cat) => {
-//             console.log('Cat:', cat);
-//         })
-//         .catch((error) => {
-//             console.error('Error:', error);
-//         });
-// };

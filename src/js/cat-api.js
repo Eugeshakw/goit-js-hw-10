@@ -46,15 +46,3 @@ function fetchCatByBreed(breedId) {
       throw error;
     });
   }
-
-//   return fetch(urlId, options)
-//   .then((response) => {
-//     if (!response.ok){
-//         throw new Error(response.status);
-//     }
-//     return response.json();
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//     throw err;
-//   });
