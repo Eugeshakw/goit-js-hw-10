@@ -2,7 +2,7 @@ import {fetchBreeds, fetchCatByBreed} from './js/cat-api';
 import SlimSelect from 'slim-select'
 import 'slim-select/dist/slimselect.css';
 import Notiflix, { Report } from 'notiflix';
-
+let isFirstLoad = true;
 import './sass/index.scss';
 
 
@@ -53,7 +53,6 @@ function hideLoader() {
 
 
 refs.selectEl.addEventListener('change', selectOn);
-
 showLoader();
 fetchBreeds()
     .then((cats) => {
@@ -83,6 +82,10 @@ function addListOfCatsToSelect(cats){
 
 
 function selectOn() {
+  if (isFirstLoad){
+    isFirstLoad = false;
+    return
+  }
     const breedId = this.value;
     
     showLoader();
