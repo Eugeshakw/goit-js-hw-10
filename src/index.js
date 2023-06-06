@@ -97,7 +97,7 @@ function selectOn() {
       .catch((error) => {
         showError()
         
-        
+        refs.catInfo.innerHTML = ''
       });
   }
   
@@ -123,9 +123,10 @@ function selectOn() {
       <div class="text-section">
         <h2>${name}</h2>
         <div>
-          <p>
+          <p><strong>Description:</strong>
           ${description}
           </p>
+          <p><strong>Temperament:</strong>${temperament}</p>
         </div>
       </div>`
 
