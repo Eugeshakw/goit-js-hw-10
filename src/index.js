@@ -53,9 +53,11 @@ function hideLoader() {
 
 
 refs.selectEl.addEventListener('change', selectOn);
+
 showLoader();
 fetchBreeds()
     .then((cats) => {
+      
         hideLoader();
         addListOfCatsToSelect(cats);
     })
@@ -74,7 +76,7 @@ function addListOfCatsToSelect(cats){
         optionEl.value = cat.id;
         optionEl.textContent = cat.name;
         // select.setData(selectData);
-        refs.selectEl.append(optionEl); 
+        // refs.selectEl.append(optionEl); 
     });
     select.setData(selectData);
 };
@@ -87,7 +89,7 @@ function selectOn() {
     return
   }
     const breedId = this.value;
-    
+    refs.catInfo.innerHTML = ''
     showLoader();
     fetchCatByBreed(breedId)
       .then((cat) => {
@@ -96,7 +98,7 @@ function selectOn() {
       })
       .catch((error) => {
         showError()
-        
+        hideLoader();
         refs.catInfo.innerHTML = ''
       });
   }
