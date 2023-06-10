@@ -51,7 +51,7 @@ function hideLoader() {
   }
 
 
-
+  
 refs.selectEl.addEventListener('change', selectOn);
 
 showLoader();
@@ -69,7 +69,7 @@ fetchBreeds()
 
 
 function addListOfCatsToSelect(cats){
- 
+  
     cats.forEach((cat) => {
       selectData.push({text: cat.name, value: cat.id});
         const optionEl = document.createElement('option');
@@ -84,6 +84,7 @@ function addListOfCatsToSelect(cats){
 
 
 function selectOn() {
+  
   if (isFirstLoad){
     isFirstLoad = false;
     return
@@ -134,3 +135,7 @@ function selectOn() {
 
     catInfoDiv.innerHTML = catInfoTemplate;
   }
+
+
+
+  
